@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-DATABASES['default']=dj_database_url.parse('postgres://wockzqtn:RieuyHWptFk1D9FLaXMvaERCZMe73s9r@dumbo.db.elephantsql.com:5432/wockzqtn')
+DATABASES['default']=dj_database_url.config(5)
+#get from herokualize
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
