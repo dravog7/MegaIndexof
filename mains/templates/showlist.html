@@ -1,0 +1,10 @@
+<body>
+<h1>Data</h1>
+<ul>
+{% for data in objects %}
+    <li><a href="../seasons?show={{data.name}}">{{data.name}}/</a></li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
+</body>

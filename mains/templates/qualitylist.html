@@ -1,0 +1,10 @@
+<body>
+        <h1>{{show}} s{{season}}E{{episode}}</h1>
+        <ul>
+        {% for data in objects %}
+            <li><a href="../videoplay?show={{show}}&season={{season}}&episode={{episode}}&quality={{data.quality}}">quality:{{data.quality}}</a></li>
+        {% empty %}
+            <li>something went wrong</li>
+        {% endfor %}
+        </ul>
+        </body>
