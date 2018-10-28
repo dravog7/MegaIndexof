@@ -10,6 +10,7 @@ def showlist(req):
     if(req.GET):
         shows=req.GET["q"]
         res=show.objects.filter(name__icontains=shows)
+        print(res,shows)
         return render(req,"showlist.html",{'objects':res})
 
 @maint_check

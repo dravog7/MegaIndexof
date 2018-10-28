@@ -1,3 +1,5 @@
+{% include 'base.html' %}
+
 <h1>{{show}} s{{season}}e{{episode}} quality {{quality}}</h1>
 <video preload="none" controls>
     {% for data in objects %}
@@ -6,3 +8,10 @@
     empty
     {% endfor %}
 </video>
+<ul>
+        {% for data in objects %}
+            <li><a href="{{data.url}}">{{data.url}}/</a></li>
+        {% empty %}
+            <li>empty</li>
+        {% endfor %}
+</ul>
