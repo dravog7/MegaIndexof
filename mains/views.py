@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import videos,show,website,settings
-from threading import Thread
 from .decor import maint_check
 import json
 # Create your views here.
@@ -40,7 +39,7 @@ def videoplayer(req):
     season=req.GET['season']
     episode=req.GET['episode']
     quality=req.GET['quality']
-    res=videos.objects.filter(show__name=shows,season=season,episode=episode).values('url')
+    res=videos.objects.filter(show__name=shows,season=season,episode=episode,quality=quality).values('url')
     return render(req,'video.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
 
 @maint_check
@@ -51,8 +50,7 @@ def searchView(req):
 @login_required(login_url='/admin')
 def process(req):
     if(req.FILES):
-        a=Thread(target=handler,args=(req.FILES['json'],))
-        a.start()
+        handler(req.FILES['json'])
         return HttpResponse(1)
     else:
         return render(req,"addmore.html")
