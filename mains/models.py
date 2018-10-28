@@ -1,6 +1,9 @@
 from django.db import models
 
 # Create your models here.
+class settings(models.Model):
+    maintenance=models.BooleanField(default=False)
+
 class website(models.Model):
     url=models.URLField()
     noof=models.BigIntegerField(default=0)
