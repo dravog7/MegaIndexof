@@ -4,7 +4,7 @@
 <h1>Shows</h1>
 <ul>
 {% for data in objects %}
-    <li><a href="../seasons?show={{data.name}}">{{data.name}}/</a></li>
+    <li><a href="../seasons?show={{data.show}}">{{data.show}}/</a></li>
 {% empty %}
     <li>empty</li>
 {% endfor %}

@@ -11,15 +11,9 @@ class website(models.Model):
     def __str__(self):
         return self.url
 
-class show(models.Model):
-    name=models.TextField()
-    
-    def __str__(self):
-        return self.name
-
 class videos(models.Model):
     website=models.ForeignKey(website,on_delete=models.CASCADE)
-    show=models.ForeignKey(show,on_delete=models.CASCADE)
+    show=models.TextField(default="")
     season=models.IntegerField(default=1)
     episode=models.IntegerField(default=1)
     quality=models.TextField(default='0p')
