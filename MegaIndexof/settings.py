@@ -82,7 +82,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default']=dj_database_url.parse('postgres://fohbvmri:McGmd2czhAIngfmZyOqcG-ccRh7o_fkH@pellefant.db.elephantsql.com:5432/fohbvmri')
+#DATABASES['default']=dj_database_url.parse('postgres://fohbvmri:McGmd2czhAIngfmZyOqcG-ccRh7o_fkH@pellefant.db.elephantsql.com:5432/fohbvmri')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
