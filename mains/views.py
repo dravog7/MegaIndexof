@@ -1,11 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from django.contrib.auth.decorators import login_required
 from .models import videos,website,settings
 from .decor import maint_check
 import json
 # Create your views here.
-@maint_check
 def showlist(req):
     if(req.GET):
         shows=req.GET["q"]
@@ -13,41 +12,36 @@ def showlist(req):
         print(res,shows)
         return render(req,"showlist.html",{'objects':res})
 
-@maint_check
-def seasonlist(req):
-    shows=req.GET['show']
+def viewredirect(req,shows,season=0,episode=0,quality=''):
+    if(season==0):
+        return seasonlist(req,shows)
+    elif(episode==0):
+        return episodelist(req,shows,season)
+    elif(quality==''):
+        return qualitylist(req,shows,season,episode)
+    else:
+        return videoplayer(req,shows,season,episode,quality)
+    return Http404()
+
+def seasonlist(req,shows):
     res=videos.objects.filter(show=shows).order_by('season').values('season').distinct()
     return render(req,'seasonlist.html',{'show':shows,'objects':res})
 
-@maint_check
-def episodelist(req):
-    shows=req.GET['show']
-    season=int(req.GET['season'])
+def episodelist(req,shows,season):
     res=videos.objects.filter(show=shows,season=season).order_by('episode').values('episode').distinct()
     return render(req,'episodelist.html',{'show':shows,'season':season,'objects':res})
 
-@maint_check
-def qualitylist(req):
-    shows=req.GET['show']
-    season=req.GET['season']
-    episode=req.GET['episode']
+def qualitylist(req,shows,season,episode):
     res=videos.objects.filter(show=shows,season=season,episode=episode).order_by('quality').values('quality').distinct()
     return render(req,'qualitylist.html',{'show':shows,'season':season,'episode':episode,'objects':res})
 
-@maint_check
-def videoplayer(req):
-    shows=req.GET['show']
-    season=req.GET['season']
-    episode=req.GET['episode']
-    quality=req.GET['quality']
+def videoplayer(req,shows,season,episode,quality):
     res=videos.objects.filter(show=shows,season=season,episode=episode,quality=quality).values('url')
     return render(req,'video.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
 
-@maint_check
 def searchView(req):
     return render(req,"search.html")
 
-@maint_check
 @login_required(login_url='/admin')
 def process(req):
     if(req.FILES):
