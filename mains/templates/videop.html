@@ -16,7 +16,7 @@
     </div>
     <ul class="list-group">
         {% for data in objects %}
-        <li class="list-group-item"><a href='{{data.url}}'>{{data.url}}</a></li>
+        <li class="list-group-item" style="word-wrap: break-word"><a href='{{data.url}}'>{{data.url}}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
