@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C:\Users\Dravog\Documents\Landing Page</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/useri.css' %}">
+</head>
+
+<body>
+    <div class="login-card">
+        <h1>MegaIndexOf </h1><span class="reauth-email"> </span>
+        <form class="form-signin" method="POST" action="./show">
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" name='q' type="search" placeholder="Enter title of TV series">
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"> </span></button>
+            </div>
+        </form>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

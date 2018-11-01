@@ -40,7 +40,7 @@ def videoplayer(req,shows,season,episode,quality):
     return render(req,'videop.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
 
 def searchView(req):
-    return render(req,"base.html")
+    return render(req,"index.html")
 
 @login_required(login_url='/admin')
 def process(req):
