@@ -1,12 +1,8 @@
-{% include 'base.html' %}
-
-<body>
-        <h1>{{show}} s{{season}}E{{episode}}</h1>
-        <ul>
-        {% for data in objects %}
-            <li><a href="../{{season}}/{{episode}}/{{data.quality}}">quality:{{data.quality}}</a></li>
-        {% empty %}
-            <li>something went wrong</li>
-        {% endfor %}
-        </ul>
-</body>
+{% extends 'base.html' %}
+{% block breadcrumb %}
+{% endblock %}
+    {% block list %}
+    <ul class="list-group">
+        <li class="list-group-item"><span>List Group Item 1</span></li>
+    </ul>
+    {% endblock %}

@@ -1,6 +1,0 @@
-{% include 'base.html' %}
-<form method="POST" action="/process" enctype="multipart/form-data">
-    {% csrf_token%}
-    <p>json:<input type='file' name="json"></textarea></p>
-    <input type="submit" value="submit!"/>
-</form>

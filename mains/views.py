@@ -6,8 +6,8 @@ from .decor import maint_check
 import json
 # Create your views here.
 def showlist(req):
-    if(req.GET):
-        shows=req.GET["q"]
+    if(req.POST):
+        shows=req.POST["q"]
         res=videos.objects.filter(show__icontains=shows).order_by('show').values('show').distinct()
         print(res,shows)
         return render(req,"showlist.html",{'objects':res})
@@ -37,10 +37,10 @@ def qualitylist(req,shows,season,episode):
 
 def videoplayer(req,shows,season,episode,quality):
     res=videos.objects.filter(show=shows,season=season,episode=episode,quality=quality).values('url')
-    return render(req,'video.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
+    return render(req,'videop.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
 
 def searchView(req):
-    return render(req,"search.html")
+    return render(req,"list.html")
 
 @login_required(login_url='/admin')
 def process(req):

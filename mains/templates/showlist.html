@@ -1,12 +1,8 @@
-{% include 'base.html' %}
-
-<body>
-<h1>Shows</h1>
-<ul>
-{% for data in objects %}
-    <li><a href="../series/{{data.show}}">{{data.show}}/</a></li>
-{% empty %}
-    <li>empty</li>
-{% endfor %}
-</ul>
-</body>
+{% extends 'base.html' %}
+{% block breadcrumb %}
+{% endblock %}
+    {% block list %}
+    <ul class="list-group">
+        <li class="list-group-item"><span>List Group Item 1</span></li>
+    </ul>
+    {% endblock %}
