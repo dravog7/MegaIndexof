@@ -3,9 +3,11 @@
 <li><a href='/'>show</a></li>
 {% endblock %}
     {% block list %}
-    {% for data in objects %}
+    
     <ul class="list-group">
+        {% for data in objects %}
         <li class="list-group-item"><a href='../series/{{data.show}}'>{{data.show}}</a></li>
+        {% endfor %}
     </ul>
-    {% endfor %}
+    
     {% endblock %}
