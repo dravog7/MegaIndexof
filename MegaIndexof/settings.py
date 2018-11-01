@@ -25,7 +25,7 @@ SECRET_KEY = 'j978qz(x0k^_@jdo3r^*ty3&4ff-payz7&o@4d2)hj++)rxk$i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-DATABASES['default']=dj_database_url.config(conn_max_age=5)
-#get from herokualize
+
+#DATABASES['default']=dj_database_url.parse('postgres://fohbvmri:McGmd2czhAIngfmZyOqcG-ccRh7o_fkH@pellefant.db.elephantsql.com:5432/fohbvmri')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -122,6 +122,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'

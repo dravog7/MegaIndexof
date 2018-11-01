@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
-{% block breadcrumb %} 
+{% block breadcrumb %}
+<li><a href='/'>show</a></li>
+<li><a href='/series/{{show}}'>{{show}}</a></li>
+<li><a href='/series/{{show}}/{{season}}'>S{{season}}</a></li>
+<li><a href='/series/{{show}}/{{season}}/{{episode}}'>E{{episode}}</a></li>
+<li><a href='/series/{{show}}/{{season}}/{{episode}}/{{quality}}'>{{quality}}</a></li>
 {% endblock %}
 {% block list %}
     <div class="embed-responsive embed-responsive-16by9">
-        <video class="embed-responsive-video" controls>
+        <video class="embed-responsive-video" controls preload="none">
+            {% for data in objects %}
+            <source src='{{data.url}}'/>
+            {% endfor %}
 		</video>
     </div>
     <ul class="list-group">
-        <li class="list-group-item"><span>List Group Item 1</span></li>
+        {% for data in objects %}
+        <li class="list-group-item"><a href='{{data.url}}'>{{data.url}}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}

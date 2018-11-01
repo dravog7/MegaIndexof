@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block breadcrumb %}
+<li><a href='/'>show</a></li>
 {% endblock %}
     {% block list %}
     {% for data in objects %}
     <ul class="list-group">
-        <li class="list-group-item"><a href='../series/'>{{data}}</a></li>
+        <li class="list-group-item"><a href='../series/{{data.show}}'>{{data.show}}</a></li>
     </ul>
+    {% endfor %}
     {% endblock %}
