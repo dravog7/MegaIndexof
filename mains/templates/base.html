@@ -11,22 +11,28 @@
 </head>
 
 <body>
-    <nav class="navbar-default custom-header">
+    <nav class="navbar navbar-default custom-header">
         <div class="container-fluid">
-                <a class="navbar-link col-sm-10" href="#"><h2>MegaIndexOf</h2> </a>
-                <button type="button" class="navbar-toggle collapsed col-sm-2" data-toggle="collapse" data-target="#navbar-collapse" >
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">MegaIndexOf</a> 
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" >
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-        </div>
+            </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav links"></ul>
-                <form class="navbar-form" action='../show' method="post">
+                <form class="navbar-form" action='/show' method="post">
                     {% csrf_token %}
-                    <input class="form-control" name='q' type="search" placeholder="Enter title of TV series">
-                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"> </span> </button>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name='q' placeholder="Search Tv series">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
