@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-{% block breadcrumbs %}
+{% block breadcrumb %}
 {% endblock %}
-{% block list %}
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="json">
-    <input type="submit">
-</form>
-(% endblock %)
+    {% block list %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="json">
+        <input type="submit">
+    </form>
+    
+    {% endblock %}
