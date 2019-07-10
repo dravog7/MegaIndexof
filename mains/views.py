@@ -15,7 +15,7 @@ def showlist(req):
         print(res,shows)
         #return render(req,"showlist.html",{'objects':res})
         a=JsonResponse(showss,safe=False)
-        a['Access-Control-Allow-Origin']='http://localhost:8080'
+        #a['Access-Control-Allow-Origin']='http://localhost:8080'
         return a
 
 def viewredirect(req,shows,season=0,episode=0,quality=''):
@@ -34,7 +34,7 @@ def seasonlist(req,shows):
     seasons=[data['season'] for data in res]
     #return render(req,'seasonlist.html',{'show':shows,'objects':res})
     a=JsonResponse(seasons,safe=False)
-    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    #a['Access-Control-Allow-Origin']='http://localhost:8080'
     return a
 
 def episodelist(req,shows,season):
@@ -42,7 +42,7 @@ def episodelist(req,shows,season):
     episodes=[data['episode'] for data in res]
     #return render(req,'episodelist.html',{'show':shows,'season':season,'objects':res})
     a=JsonResponse(episodes,safe=False)
-    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    #a['Access-Control-Allow-Origin']='http://localhost:8080'
     return a
 
 def qualitylist(req,shows,season,episode):
@@ -50,7 +50,7 @@ def qualitylist(req,shows,season,episode):
     qualities=[data["quality"] for data in res]
     #return render(req,'qualitylist.html',{'show':shows,'season':season,'episode':episode,'objects':res})
     a=JsonResponse(qualities,safe=False)
-    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    #a['Access-Control-Allow-Origin']='http://localhost:8080'
     return a
 
 def videoplayer(req,shows,season,episode,quality):
@@ -58,7 +58,7 @@ def videoplayer(req,shows,season,episode,quality):
     urls=[data['url'] for data in res]
     #return render(req,'videop.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
     a=JsonResponse(urls,safe=False)
-    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    #a['Access-Control-Allow-Origin']='http://localhost:8080'
     return a
 
 def searchView(req):
