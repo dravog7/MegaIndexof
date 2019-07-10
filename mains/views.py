@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse,Http404,JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from .models import videos,website,settings
 from .decor import maint_check
 import json
 # Create your views here.
+@csrf_exempt
 def showlist(req):
     if(req.POST):
         shows=req.POST["q"]
@@ -12,7 +14,9 @@ def showlist(req):
         showss=[data['show'] for data in res]
         print(res,shows)
         #return render(req,"showlist.html",{'objects':res})
-        return JsonResponse(showss,safe=False)
+        a=JsonResponse(showss,safe=False)
+        a['Access-Control-Allow-Origin']='http://localhost:8080'
+        return a
 
 def viewredirect(req,shows,season=0,episode=0,quality=''):
     if(season==0):
@@ -29,25 +33,33 @@ def seasonlist(req,shows):
     res=videos.objects.filter(show=shows).order_by('season').values('season').distinct()
     seasons=[data['season'] for data in res]
     #return render(req,'seasonlist.html',{'show':shows,'objects':res})
-    return JsonResponse(seasons,safe=False)
+    a=JsonResponse(seasons,safe=False)
+    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    return a
 
 def episodelist(req,shows,season):
     res=videos.objects.filter(show=shows,season=season).order_by('episode').values('episode').distinct()
     episodes=[data['episode'] for data in res]
     #return render(req,'episodelist.html',{'show':shows,'season':season,'objects':res})
-    return JsonResponse(episodes,safe=False)
+    a=JsonResponse(episodes,safe=False)
+    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    return a
 
 def qualitylist(req,shows,season,episode):
     res=videos.objects.filter(show=shows,season=season,episode=episode).order_by('quality').values('quality').distinct()
     qualities=[data["quality"] for data in res]
     #return render(req,'qualitylist.html',{'show':shows,'season':season,'episode':episode,'objects':res})
-    return JsonResponse(qualities,safe=False)
+    a=JsonResponse(qualities,safe=False)
+    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    return a
 
 def videoplayer(req,shows,season,episode,quality):
     res=videos.objects.filter(show=shows,season=season,episode=episode,quality=quality).values('url')
     urls=[data['url'] for data in res]
     #return render(req,'videop.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
-    return JsonResponse(urls,safe=False)
+    a=JsonResponse(urls,safe=False)
+    a['Access-Control-Allow-Origin']='http://localhost:8080'
+    return a
 
 def searchView(req):
     return render(req,"index.html")
