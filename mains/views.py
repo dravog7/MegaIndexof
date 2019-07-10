@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,Http404
+from django.http import HttpResponse,Http404,JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import videos,website,settings
 from .decor import maint_check
@@ -9,8 +9,10 @@ def showlist(req):
     if(req.POST):
         shows=req.POST["q"]
         res=videos.objects.filter(show__icontains=shows).order_by('show').values('show').distinct()
+        showss=[data['show'] for data in res]
         print(res,shows)
-        return render(req,"showlist.html",{'objects':res})
+        #return render(req,"showlist.html",{'objects':res})
+        return JsonResponse(showss,safe=False)
 
 def viewredirect(req,shows,season=0,episode=0,quality=''):
     if(season==0):
@@ -25,19 +27,27 @@ def viewredirect(req,shows,season=0,episode=0,quality=''):
 
 def seasonlist(req,shows):
     res=videos.objects.filter(show=shows).order_by('season').values('season').distinct()
-    return render(req,'seasonlist.html',{'show':shows,'objects':res})
+    seasons=[data['season'] for data in res]
+    #return render(req,'seasonlist.html',{'show':shows,'objects':res})
+    return JsonResponse(seasons,safe=False)
 
 def episodelist(req,shows,season):
     res=videos.objects.filter(show=shows,season=season).order_by('episode').values('episode').distinct()
-    return render(req,'episodelist.html',{'show':shows,'season':season,'objects':res})
+    episodes=[data['episode'] for data in res]
+    #return render(req,'episodelist.html',{'show':shows,'season':season,'objects':res})
+    return JsonResponse(episodes,safe=False)
 
 def qualitylist(req,shows,season,episode):
     res=videos.objects.filter(show=shows,season=season,episode=episode).order_by('quality').values('quality').distinct()
-    return render(req,'qualitylist.html',{'show':shows,'season':season,'episode':episode,'objects':res})
+    qualities=[data["quality"] for data in res]
+    #return render(req,'qualitylist.html',{'show':shows,'season':season,'episode':episode,'objects':res})
+    return JsonResponse(qualities,safe=False)
 
 def videoplayer(req,shows,season,episode,quality):
     res=videos.objects.filter(show=shows,season=season,episode=episode,quality=quality).values('url')
-    return render(req,'videop.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
+    urls=[data['url'] for data in res]
+    #return render(req,'videop.html',{'show':shows,'season':season,'episode':episode,'quality':quality,'objects':res})
+    return JsonResponse(urls,safe=False)
 
 def searchView(req):
     return render(req,"index.html")
