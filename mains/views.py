@@ -81,6 +81,6 @@ def handler(a):
     vid=[]
     for i in js:
         vid.append(videos(website=web[0],show=i['show'].lower(),season=i['season'],episode=i['episode'],quality=i['quality'],url=i['url']))
-    videos.objects.bulk_create(vid)
+    videos.objects.bulk_create(vid,ignore_conflicts=True)
     sett.maintenance=False
     sett.save()
