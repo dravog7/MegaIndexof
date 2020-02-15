@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-DATABASES['default']=dj_database_url.config(conn_max_age=5)
+DATABASES['default']=dj_database_url.parse('postgres://fohbvmri:McGmd2czhAIngfmZyOqcG-ccRh7o_fkH@pellefant.db.elephantsql.com:5432/fohbvmri')
 #get from herokualize
 
 # Password validation
