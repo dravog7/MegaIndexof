@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.http import HttpResponse
+
+def index(req,slug=""):
+    fil = open("./staticfiles/dist/index.htm","r")
+    return HttpResponse(fil)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('mains.urls')),
+    path('api/',include('mains.urls')),
+    path("",index),
+    path("<slug:slug>",index),
 ]
