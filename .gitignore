@@ -5,3 +5,4 @@ staticfiles
 venv/**
 **/node_modules/**
 !staticfiles/dist/**
+.vscode/**

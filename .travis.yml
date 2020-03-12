@@ -1,14 +1,11 @@
 language: node_js
 node_js:
   - "stable"
-before_deploy:
-  - cd UI
 cache:
   directories:
-    - UI/node_modules
+    - node_modules
 script:
   - npm run build
-  - cd ..
 deploy:
   provider: azure_web_apps
   # username: azure_deployment_user       # If AZURE_WA_USERNAME isn't set
