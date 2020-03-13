@@ -2,3 +2,7 @@
 dev
 db.sqlite3
 staticfiles
+venv/**
+**/node_modules/**
+!staticfiles/dist/**
+.vscode/**

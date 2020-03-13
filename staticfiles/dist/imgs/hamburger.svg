@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path id="shape" d="M 10 10 h 90 v 10 h -90 v -10 M 10 30 h 90 v 10 h -90 v -10 M 10 50 h 90 v 10 h -90 v -10" fill="black" stroke="black">
+<animate attributeName="d" dur="1s" to="M 10 20 L 100 60 L 100 50 L 10 10 L 10 20 M 10 60 L 100 20 L 100 10 L 10 50 L 10 60" begin="shape.click"/>
+</path>
+</svg>
