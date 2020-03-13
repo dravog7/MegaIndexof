@@ -19,7 +19,6 @@ steps:
     customCommand: 'run build'
 - task: PipAuthenticate@1
   inputs:
-    artifactFeeds: 'ritu20front'
     onlyAddExtraIndex: true
 - script: |
       pip install virtualenv
