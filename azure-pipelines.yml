@@ -21,6 +21,7 @@ steps:
   inputs:
     onlyAddExtraIndex: true
 - script: |
+      pip3 install setuptools
       pip3 install virtualenv
       python3 -m virtualenv antenv
       source antenv/bin/activate
