@@ -23,7 +23,7 @@ steps:
 - script: |
       pip3 install setuptools
       pip3 install virtualenv
-      python3 -m virtualenv antenv
+      python3 -m virtualenv antenv3.6
       source antenv/bin/activate
       pip install -r requirements.txt
 
