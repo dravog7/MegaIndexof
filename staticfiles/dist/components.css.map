@@ -2,9 +2,9 @@
   "version": 3,
   "file": "components.css",
   "sources": [
-    "../../portfolio/src/components/navbar.svelte",
-    "../../portfolio/src/pages/Construction.svelte",
-    "../../portfolio/src/pages/specials.svelte"
+    "../../src/components/navbar.svelte",
+    "../../src/pages/Construction.svelte",
+    "../../src/pages/specials.svelte"
   ],
   "sourcesContent": [
     "<script>\nimport { link } from \"svelte-routing\";\nimport {getContext} from 'svelte';\nimport {ROUTER} from 'svelte-routing/src/contexts';\nimport Ham from './hamburger.svelte'\nvar { activeRoute } = getContext(ROUTER);\nlet expanded=0;\nlet currRoute;\n$: {\n    if($activeRoute){\n        currRoute = $activeRoute.uri;\n    console.log($activeRoute);\n    }\n}\n</script>\n\n<style lang=\"text/postcss\">a:active,a:hover,a:link,a:visited{color:#000;text-decoration:none}.nav{opacity:.75}.nav:hover{opacity:1}li{padding:1rem}</style>\n\n<div class=\"nav font-mono fixed bg-gray-200 rounded-r-lg lg:w-screen\">\n    <div class=\"lg:hidden p-4\">\n    <Ham on:switch=\"{e=>expanded=!e.detail.state}\"/>\n    </div>\n    <ol class:hidden={!expanded} class=\"lg:flex\">\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/':false}\" class=\"border-red-400\"><a href=\"/\" use:link>Home</a></li>\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/about':false}\" class=\"hidden border-orange-400\"><a href=\"/about\" use:link>About</a></li>\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/education':false}\" class=\"hidden border-yellow-400\"><a href=\"/education\" use:link>Education</a></li>\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/work':false}\" class=\"hidden border-green-400\"><a href=\"/work\" use:link>Work Experience</a></li>\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/projects':false}\" class=\"hidden border-teal-400\"><a href=\"/projects\" use:link>Projects</a></li>\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/games':false}\" class=\"hidden border-blue-400\"><a href=\"/games\" use:link>Games</a></li>\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/blog':false}\" class=\"hidden border-indigo-400\"><a href=\"/blog\" use:link>Blog</a></li>\n        <li class:border-b-4=\"{$activeRoute?currRoute=='/special':false}\" class=\"border-purple-400\"><a href=\"/special\" use:link>Specials</a></li>\n    </ol>\n</div>",
