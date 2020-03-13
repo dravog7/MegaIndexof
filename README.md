@@ -11,5 +11,3 @@ google in the following format.
 
 These websites list the files and folders like a file system.
 To make it easier to locate and stream tv series, I crawled some of these sites and categorized the links obtained to make this website.
-
-The herokualize branch is the deployed branch. Its deployed at http://megaindexof.herokuapp.com/#/

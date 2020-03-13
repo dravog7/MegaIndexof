@@ -8,7 +8,7 @@
       "build:auto": "rollup -c -w",
       "serve": "sirv ./staticfiles/dist -s",
       "serve:dev": "sirv ./staticfiles/dist --dev -s",
-      "dev": "run-p build:auto serve:dev"
+      "dev": "gunicorn MegaIndexof.wsgi & run-p build:auto"
    },
    "keywords": [
       "Svelte",
