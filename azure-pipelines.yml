@@ -21,8 +21,8 @@ steps:
   inputs:
     onlyAddExtraIndex: true
 - script: |
-      pip install virtualenv
-      python -m virtualenv antenv
+      pip3 install virtualenv
+      python3 -m virtualenv antenv
       source antenv/bin/activate
       pip install -r requirements.txt
 
