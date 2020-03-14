@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import dj_database_url
+from queue import Queue
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -82,8 +83,9 @@ DATABASES = {
     }
 }
 
-DATABASES['default']=dj_database_url.parse('postgres://fohbvmri:McGmd2czhAIngfmZyOqcG-ccRh7o_fkH@pellefant.db.elephantsql.com:5432/fohbvmri')
-
+#DATABASES['default']=dj_database_url.parse('postgres://fohbvmri:McGmd2czhAIngfmZyOqcG-ccRh7o_fkH@pellefant.db.elephantsql.com:5432/fohbvmri')
+if(os.environ.get("DATABASE_URL")):
+    DATABASES['default']=dj_database_url.config(conn_max_age=5)
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -125,3 +127,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
+
+CRAWL = Queue()
+LINK = Queue()
+OUT = Queue()
+STOP = {'signal':True}

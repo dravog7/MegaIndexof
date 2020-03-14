@@ -16,14 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.http import HttpResponse
-
+from .CrawlBack import startup,CRAWL
 def index(req,slug=""):
     fil = open("./staticfiles/dist/index.htm","r")
     return HttpResponse(fil)
 
+def trial(req):
+    url = req.GET.get("url")
+    print(url)
+    CRAWL.put(["",url])
+    return HttpResponse(1)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('mains.urls')),
+    path('try/',trial),
     path("",index),
     path("<slug:slug>",index),
 ]
+
+startup()

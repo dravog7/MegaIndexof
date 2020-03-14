@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,Http404,JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from .models import videos,website,settings
+from .models import videos,settings
 from .decor import maint_check
 import json
 # Create your views here.
