@@ -7,11 +7,12 @@ def CancelandExcept(func):
             future=func(self,*args,**kwargs)
             ids = str(future)
             self.futures[ids]=future
+            print("awaiting future")
             value = await future
             del self.futures[ids]
             return value
         except asyncio.CancelledError as e:
-            pass
+            print("cancelled")
         except:
             print("err:",sys.exc_info()[0])
     return decor

@@ -96,14 +96,15 @@ class Crawler(Thread):
 
     @CancelandExcept
     def head(self,url):
-        #print("in head")
+        print("in head")
         loop = asyncio.get_event_loop()
         future = loop.run_in_executor(None,requests.head,url)
+        print("gotfuture")
         return future
 
     @CancelandExcept
     def get(self,url):
-        #print("in get")
+        print("in get")
         loop = asyncio.get_event_loop()
         future = loop.run_in_executor(None,requests.get,url)
         return future
