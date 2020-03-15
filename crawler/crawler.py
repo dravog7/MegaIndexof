@@ -44,6 +44,7 @@ class Crawler(Thread):
                 print(url)
                 #check type of url
                 req = await self.head(url[1])
+                print(req)
                 if(not req):
                     continue
                 if(self.checkType(contentType=req.headers)):
