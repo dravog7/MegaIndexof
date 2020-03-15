@@ -9,6 +9,7 @@ def CancelandExcept(func):
             self.futures[ids]=future
             print("awaiting future")
             value = await future
+            print(value)
             del self.futures[ids]
             return value
         except asyncio.CancelledError as e:

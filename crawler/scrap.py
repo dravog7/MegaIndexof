@@ -12,7 +12,7 @@ class scrap(Thread):
         #wait for links.get() and output to out.put()
         while True:
             url = self.links.get()
-            print(url)
+            print("scrap",url)
             entry={'website':urlparse(url).netloc,
                     'show':'',
                     'season':'',
