@@ -12,6 +12,7 @@ class Updater(Thread):
         while True:
             try:
                 val = self.out.get(timeout=10)
+                print(val)
                 self.process(val)
             except:
                 pass

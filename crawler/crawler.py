@@ -41,6 +41,7 @@ class Crawler(Thread):
             #print("start main")
             while self.stop['signal']:
                 url = await self.qget()
+                print(url)
                 #check type of url
                 req = await self.head(url[1])
                 if(not req):
