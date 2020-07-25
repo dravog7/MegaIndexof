@@ -1,2 +1,8 @@
+**/__pycache__
+dev
+db.sqlite3
+staticfiles
 venv
+
+.vscode
 node_modules
