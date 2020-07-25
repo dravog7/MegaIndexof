@@ -1,9 +1,2 @@
-**/__pycache__
-dev
-db.sqlite3
-staticfiles
-venv/**
-node_modules/**
-!staticfiles/dist/**
-.vscode/**
-migrate.sh
+venv
+node_modules
